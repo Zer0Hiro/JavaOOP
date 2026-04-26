@@ -1,1 +1,4 @@
-/.vscode
+*.vscode
+*.class
+lectures/class4/README.md
+.gitignore
