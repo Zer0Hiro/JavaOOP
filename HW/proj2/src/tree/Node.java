@@ -34,7 +34,8 @@ public class Node {
             }
             children[index].add(s);
 
+        } else {
+            this.count++;
         }
-        count++;
     }
 }
