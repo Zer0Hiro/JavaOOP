@@ -1,8 +1,5 @@
 package circuits;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class NotGate extends Gate {
 
     // Return only one var
