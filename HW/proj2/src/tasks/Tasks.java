@@ -17,7 +17,7 @@ public class Tasks {
 
     // Task2 first -> Task1
     public boolean dependsOn(int task1, int task2) {
-        if(task1 >= num || task2 >= num )
+        if (task1 >= num || task2 >= num)
             return false;
         tasks[task2].addDependency(tasks[task1]);
         return (task1 > 0 && task2 > 0) && (task1 < num && task2 < num);
@@ -42,7 +42,7 @@ public class Tasks {
             if (tasks[i].getDep_size() == 0) {
                 isLoop = false;
                 orders[position++] = i;
-                compareTasks(position, orders, tasks[i]);
+                position = compareTasks(position, orders, tasks[i]);
             }
 
         }
@@ -54,16 +54,42 @@ public class Tasks {
     // Recursievly check if there is a closed circle, and adds task by its order in
     // orders list
     private int compareTasks(int position, int[] orders, TaskNode task) {
-        for (TaskNode ts : task.getMain()) {
+        for (TaskNode ts : task.getChilds()) {
             if (ts != null) {
+                // More than one dependecny
+                // if(ts.getDep_size() != 1)
+                // {
+
+                // }
                 int nextNode = ts.getId();
                 // If not add to the list
                 orders[position++] = nextNode;
                 position = compareTasks(position, orders, ts);
-            } else {
+            } else
                 return position;
-            }
         }
         return -1;
     }
+
+    public int oneTaskTree(int position, int[] orders, TaskNode task) {
+        for (TaskNode ts : task.getChilds()) {
+            if (ts != null) {
+                // More than one dependecny
+                if (ts.getDep_size() != 1) {
+
+                }
+                int nextNode = ts.getId();
+                // If not add to the list
+                orders[position++] = nextNode;
+                position = compareTasks(position, orders, ts);
+            } else
+                return position;
+        }
+        return -1;
+    }
+
+    public TaskNode[] getTasks() {
+        return tasks;
+    }
+
 }

@@ -115,7 +115,7 @@ public class GameTester extends Tester {
 	void testPlayer() {
 		initPublishedTest(Player.class);
 		Player p = new Player("Test", 'X');
-		checkEq(p.getId(), "Test", "Player.getName");
+		checkEq(p.getName(), "Test", "Player.getName");
 		checkEq(p.getMark(), 'X', "Player.getMark");
 		checkEqStr(p, "Test(X)", "Player.toString");
 	}

@@ -2,15 +2,15 @@ package tasks;
 
 public class TaskNode {
     private int id;
-    private TaskNode[] depending;
-    private TaskNode[] main;
+    private TaskNode[] parents;
+    private TaskNode[] childs;
     private int dep_size = 0;
     private int main_size = 0;
 
     public TaskNode(int id, int taskAmount) {
         this.id = id;
-        this.depending = new TaskNode[taskAmount];
-        this.main = new TaskNode[taskAmount];
+        this.parents = new TaskNode[taskAmount];
+        this.childs = new TaskNode[taskAmount];
     }
 
     public int getDep_size() {
@@ -25,12 +25,12 @@ public class TaskNode {
         return id;
     }
 
-    public TaskNode[] getDepending() {
-        return depending;
+    public TaskNode[] getParents() {
+        return parents;
     }
 
-    public TaskNode[] getMain() {
-        return main;
+    public TaskNode[] getChilds() {
+        return childs;
     }
 
     public void setDep_size(int dep_size) {
@@ -39,11 +39,11 @@ public class TaskNode {
 
     public void addDependency(TaskNode depends) {
         // add item that depends on this node
-        this.main[main_size++] = depends;
+        this.childs[main_size++] = depends;
         int depend_size = depends.getDep_size();
 
         // update dependency
-        depends.depending[depend_size++] = this;
+        depends.parents[depend_size++] = this;
         depends.setDep_size(depend_size);
     }
 
