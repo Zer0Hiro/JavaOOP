@@ -2,5 +2,5 @@
 *.class
 lectures/class4/README.md
 .gitignore
-javafx-sdk-26.0.1
+javafx-sdk*
 *.png
