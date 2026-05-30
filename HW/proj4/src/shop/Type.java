@@ -1,12 +1,14 @@
-package Shop;
+package shop;
 
+// Custom guitar types
 public enum Type {
     ACOUSTIC("Acoustic"),
-    ELECTRIC("Electrical"),
+    ELECTRIC("Electric"),
     CLASSICAL("Classical");
 
     private final String easyName;
 
+    // Change to easyName
     private Type(String easyName) {
         this.easyName = easyName;
     }

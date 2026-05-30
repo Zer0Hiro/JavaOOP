@@ -1,4 +1,4 @@
-package Shop;
+package shop;
 
 public class Guitar extends Instrument {
     private Type type;
@@ -18,8 +18,4 @@ public class Guitar extends Instrument {
         return "Guitar(" + type + ") " + company + "(" + serial + "), price = " + price;
     }
 
-    public static void main(String[] args) {
-        Guitar guitar = new Guitar("Fender", 3000, Type.ACOUSTIC);
-        System.err.println(guitar);
-    }
 }

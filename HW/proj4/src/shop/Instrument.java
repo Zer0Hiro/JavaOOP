@@ -1,4 +1,4 @@
-package Shop;
+package shop;
 
 public abstract class Instrument {
     protected String company;
@@ -29,6 +29,10 @@ public abstract class Instrument {
 
     public Type getType() {
         return null;
+    }
+
+    public static int getSerialCounter() {
+        return serialCounter;
     }
 
 }

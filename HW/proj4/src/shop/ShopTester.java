@@ -1,6 +1,6 @@
 // 8257260
 
-package Shop;
+package shop;
 
 import java.util.Arrays;
 import java.util.List;
@@ -64,14 +64,14 @@ public class ShopTester extends Tester {
 		checkEq(g.getPrice(), 1000, "g.getPrice()");
 		checkEq(g.getCompany(), "Gibson", "g.getCompany()");
 		checkEq(g.getType(), Type.ACOUSTIC, "g.getType()");
-		checkEq(g.getSerialCounter(), 0, "g.getSerial()");
+		checkEq(g.getSerial(), 0, "g.getSerial()");
 		checkEqStr(g, "Guitar(Acoustic) Gibson(0), price = 1000", "g.toString()");
 
 		Piano p = new Piano("Yamaha", 5000, 7);
 		checkEq(p.getPrice(), 5000, "p.getPrice()");
 		checkEq(p.getCompany(), "Yamaha", "p.getCompany()");
 		checkEq(p.getOctaves(), 7, "p.getOctaves()");
-		checkEq(p.getSerialCounter(), 1, "p.getSerial()");
+		checkEq(p.getSerial(), 1, "p.getSerial()");
 		checkEqStr(p, "Piano(7 octaves) Yamaha(1), price = 5000", "p.toString()");
 
 		Shop s = new Shop();
