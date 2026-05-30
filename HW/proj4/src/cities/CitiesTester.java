@@ -1,5 +1,5 @@
 // 18065518
-package Cities;
+package cities;
 
 import java.util.List;
 
