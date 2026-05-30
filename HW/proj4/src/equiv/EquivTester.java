@@ -1,6 +1,6 @@
 // 36817
 
-package Equiv;
+package equiv;
 
 import util.Tester;
 
