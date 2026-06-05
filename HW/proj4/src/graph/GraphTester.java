@@ -1,4 +1,3 @@
-// 15187612
 package graph;
 
 import java.util.Arrays;
