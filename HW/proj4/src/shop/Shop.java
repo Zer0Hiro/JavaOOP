@@ -10,6 +10,7 @@ public class Shop {
         instruments.add(i);
     }
 
+    // Returns instance of specific serial
     public Instrument get(int serial) {
         // If not same serial, Object does not exist
         for (Instrument inst : instruments) {
