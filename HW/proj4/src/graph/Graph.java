@@ -80,14 +80,4 @@ public class Graph<V> {
         }
         return false;
     }
-
-    public static void main(String[] args) throws GraphException {
-        Graph<Integer> g = new Graph<>();
-        for (int i = 0; i < 100; i++)
-            g.addVertex(i);
-        for (int i = 0; i < 50; i++)
-            g.addEdge(i, i + 1);
-        System.out.println(g.connected(1, 10));
-        System.out.println(g.connected(3, 70));
-    }
 }

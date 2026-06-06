@@ -1,6 +1,10 @@
 package graph;
 
-public class Maze {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public class Maze implements GraphInterface<Place> {
     private int size;
     private Place start, end;
     private boolean[][] walls;
@@ -22,7 +26,7 @@ public class Maze {
         return true;
     }
 
-    public boolean isSolvable() throws GraphException {
+    public boolean isSolvable() {
         Graph<Place> graph = new Graph<>();
 
         try {
@@ -58,8 +62,8 @@ public class Maze {
                     }
                 }
             }
-
             return graph.connected(this.start, this.end);
+
         } catch (GraphException e) {
             // Print error
             e.printStackTrace();
@@ -91,4 +95,33 @@ public class Maze {
         return out;
     }
 
+    @Override
+    public Collection<Place> neighbours(Place p) {
+        List<Place> isNeighbours = new ArrayList<>();
+
+        int x = p.getX();
+        int y = p.getY();
+
+        // Neighbour Down (x+1)
+        if (x + 1 < size && !walls[x + 1][y]) {
+            isNeighbours.add(new Place(x + 1, y, size));
+        }
+
+        // Neighbour Up (x-1)
+        if (x - 1 >= 0 && !walls[x - 1][y]) {
+            isNeighbours.add(new Place(x - 1, y, size));
+        }
+
+        // Neighbour Right (y+1)
+        if (y + 1 < size && !walls[x][y + 1]) {
+            isNeighbours.add(new Place(x, y + 1, size));
+        }
+
+        // Neighbour Left (y-1)
+        if (y - 1 >= 0 && !walls[x][y - 1]) {
+            isNeighbours.add(new Place(x, y - 1, size));
+        }
+
+        return isNeighbours;
+    }
 }
