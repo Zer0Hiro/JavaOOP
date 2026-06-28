@@ -27,22 +27,30 @@ public class TwoArrays implements Iterable<Integer> {
             if (!even) {
                 if (index < a1.length) {
                     value = a1[index];
-                } else if (index + 1 < a2.length) {
-                    value = a2[index + 1];
+                } else if (index < a2.length) {
+                    value = a2[index];
                 }
                 even = true;
 
             } else {
                 if (index < a2.length) {
                     value = a2[index];
-                } else if (index + 1 < a1.length) {
-                    value = a1[index + 1];
+                } else if (index < a1.length) {
+                    value = a1[index];
                 }
                 even = false;
             }
 
             counter++;
-            if (counter % 2 == 0) {
+
+            // Increment index
+            if (index < a1.length && index < a2.length) {
+                // move it only after 2 lists printed their val
+                if (counter % 2 == 0) {
+                    index++;
+                }
+            } else {
+                // If one list empty, move index each turn
                 index++;
             }
 
@@ -55,13 +63,4 @@ public class TwoArrays implements Iterable<Integer> {
         return new Iterator1();
     }
 
-    public static void main(String[] args) {
-        int[] a1 = { 1, 2, 3, 4 };
-        int[] a2 = { 100, 101, 102, 103, 104, 105, 106 };
-
-        TwoArrays aa = new TwoArrays(a1, a2);
-        for (int i : aa)
-            System.out.print(i + " ");
-
-    }
 }

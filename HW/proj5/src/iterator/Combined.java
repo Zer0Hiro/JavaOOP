@@ -3,47 +3,48 @@ package iterator;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Combined<E> implements Iterable<E> {
     private Iterable<E> first, second;
 
-    @Override
-    public Iterator<E> iterator() {
-        return new IteratorComb();
-    }
-
     public Combined(Iterable<E> first, Iterable<E> second) {
         this.first = first;
         this.second = second;
     }
 
-    private class IteratorComb implements Iterator<E> {
-        private int setIndex = 0;
-        private int listIndex = 0;
-        
+    @Override
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
+            private final Iterator<E> iter1 = first.iterator();
+            private final Iterator<E> iter2 = second.iterator();
+            private boolean swap = false;
 
-        @Override
-        public boolean hasNext() {
-            return setIndex < first
-        }
+            @Override
+            public boolean hasNext() {
+                return iter1.hasNext() || iter2.hasNext();
+            }
 
-        @Override
-        public E next() {
-            // TODO Auto-generated method stub
-            return null;
-        }
+            @Override
+            public E next() {
+                if (iter1.hasNext() && swap == false) {
+                    // Check if second list is not empty
+                    if (iter2.hasNext())
+                        swap = true;
+                    return iter1.next();
+                } else if (iter2.hasNext()) {
+                    // Check if first list is not empty
+                    if (iter1.hasNext())
+                        swap = false;
+                    return iter2.next();
+                }
 
-    }
+                // Throw exception if empty
+                throw new NoSuchElementException();
+            }
 
-    public static void main(String[] args) {
-        List<String> list = Arrays.asList("one", "two", "three");
-        Set<String> set = new TreeSet<>();
-        set.addAll(Arrays.asList("B", "A", "D", "C", "E"));
-        Combined<String> c = new Combined<>(set, list);
-        for (String s : c)
-            System.out.print(s + " ");
-
+        };
     }
 }
