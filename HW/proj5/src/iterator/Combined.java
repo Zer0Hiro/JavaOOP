@@ -1,11 +1,8 @@
 package iterator;
 
-import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.TreeSet;
+
 
 public class Combined<E> implements Iterable<E> {
     private Iterable<E> first, second;
